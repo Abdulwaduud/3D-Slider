@@ -1,0 +1,226 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('fonts/NCLMonsterBeast-Demo.otf') format('opentype');
+}
+
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'CustomFont', "Lato", sans-serif;
+    /* outline: 2px solid red; */
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.banner .slider {
+    position: absolute;
+    width: 300px;
+    height: 350px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 35s linear infinite;
+    z-index: 100;
+}
+
+@keyframes autoRun {
+    0% {
+        transform: perspective(1000px) rotateX(-12deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: perspective(1000px) rotateX(-12deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform:
+        rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px);
+}
+
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner .content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1400px, 100vw);
+    height: max-content;
+    padding-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.banner .content h1 {
+    font-size: 14em;
+    font-family: Helvetica, sans-serif;
+    font-weight: 900;
+    line-height: 1em;
+    color: #252838;
+    position: relative;
+}
+
+.link {
+    text-decoration: none;
+    color: #252838;
+    transition: all 1s ease;
+}
+
+a:hover, a:active {
+    color: darkslategray;
+    cursor: pointer;
+    /* transform: translateY(-10%); */
+
+}
+
+.banner .content h1::after {
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 2px #252838;
+    color: transparent;
+    font-family: Helvetica, sans-serif;
+    font-weight: 900;
+}
+
+.banner .content .author {
+    text-align: right;
+    max-width: 300px;
+    position: absolute;
+    bottom: 0;
+    right: 100;
+    z-index: 999;
+}
+
+.banner .content h2 {
+    font-size: 3em;
+}
+
+.banner .content .model {
+    background-image: url(images/coder.png);
+    width: 100%;
+    height: 75vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: auto 130%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    z-index: 1;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .banner {
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+
+    }
+
+    .banner .slider {
+        position: absolute;
+        width: 180px;
+        height: 230px;
+        top: 15%;
+        left: calc(50% - 100px);
+        transform-style: preserve-3d;
+        transform: perspective(1000px);
+        animation: autoRun 55s linear infinite;
+        z-index: 100;
+    }
+
+    .banner .content {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(1000px, 100vw);
+        height: max-content;
+        padding-bottom: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .banner .content h1 {
+        font-size: 7em;
+        font-family: Helvetica, sans-serif;
+        font-weight: 900;
+        line-height: 1em;
+        color: #252838;
+        position: absolute;
+        top: -700%;
+        z-index: ;
+    }
+
+    a:hover {
+        color: darkslategray;
+        cursor: pointer;
+    }
+
+    .banner .content h1::after {
+        display: none;
+        position: absolute;
+        inset: 0 0 0 0;
+        content: attr(data-content);
+        z-index: 2;
+        -webkit-text-stroke: 2px #252838;
+        color: transparent;
+        font-family: Helvetica, sans-serif;
+        font-weight: 900;
+    }
+
+    .banner .content .author {
+        text-align: right;
+        /* max-width: 250px; */
+        position: absolute;
+        bottom: 0;
+        z-index: 999;
+    }
+
+    .banner .content h2 {
+        font-size: 2.8em;
+    }
+
+    .banner .content .model {
+        background-image: url(images/coder.png);
+        width: 100%;
+        height: 85vh;
+        position: absolute;
+        bottom: 60%;
+        left: 0;
+        top: ;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: top center;
+        z-index: 1;
+    }
+
+}
